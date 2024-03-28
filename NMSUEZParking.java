@@ -31,7 +31,6 @@ public class NMSUEZParking {
                     System.out.println("Login Successful!");
                     // After successful login, show the user menu
                     showUserMenu(scanner, userDatabase, aggieID);
-                    break; // Exit the loop if a valid user is found
                 } else {
                     // Invalid login attempt
                     System.out.println("User not found. Please try again.");
@@ -42,7 +41,7 @@ public class NMSUEZParking {
             }
         }
 
-        scanner.close();
+        //scanner.close();
     }
 
     // Method to loadUserData
@@ -110,7 +109,8 @@ public class NMSUEZParking {
                     fullName = existingUser.getFullName();
                     hasParkingPermit = existingUser.hasParkingPermit();
                     parkingPermitType = existingUser.getParkingPermitType();
-                    break; // Break the do-while loop if user confirms identity
+                    return;
+                    //break; // Break the do-while loop if user confirms identity
                 }
             } else {
                 break; // If ID is new and valid, break the loop to proceed with registration
