@@ -1,0 +1,33 @@
+To get the GUI running on your machine take these steps:
+
+1) Download Javafx SDK. It should look like this javafx-sdk-22
+2) In VSCode, at the bottom left of the window you should see "JAVA PROJECTS", and underneath that there
+should be a side bar named "Referenced Libraries", click on the plus and add all the Jar files that are in your
+javafx-sdk-22 folder. It should be located in the lib directory. Add all of the Jar files.
+
+If this doesn't work. Look at how I did it under the settings.json file.
+Ex:
+{
+    "java.project.sourcePaths": ["src"],
+    "java.project.outputPath": "bin",
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+
+        "/Users/paulinerosales/Desktop/javafx-sdk-22/lib/**/*.jar"
+    ]
+}
+
+Might need to add your pathway under referencedLibraries in both settings.json in the NMSUEZPARKING project directory and outside of it
+in the repo. VSCode randomly put the .vscode outside of the directory for some unknown reason.
+
+3) Under .vscode look for launch.json. You need to add "VmArgs": and copy and paste 
+
+FOR LINUX AND MAC
+"vmArgs": "--module-path /path/to/javafx-sdk-22/lib --add-modules javafx.controls,javafx.fxml"
+
+FOR WINDOWS
+"vmArgs": "--module-path "/path/to/javafx-sdk-22/lib" --add-modules javafx.controls,javafx.fxml"
+
+Where the path is the path to your javafx-sdk-22/lib directory.
+
+Instead of where my vmArgs are, replace this with yours.
