@@ -12,6 +12,7 @@ public class NMSUEZParking {
 
         // Load existing user data from file (if any)
         loadUserData(userDatabase);
+      
 
         System.out.println("Welcome to NMSU EZ Parking!");
 
@@ -25,13 +26,14 @@ public class NMSUEZParking {
                 registerNewUser(scanner, userDatabase);
             } else if (newUserResponse.equalsIgnoreCase("no")) {
                 // Returning user login
-                String aggieID = loginUser(scanner, userDatabase);
-                if (aggieID == "back") {
+                String userName = loginUser(scanner, userDatabase);
+                if (userName  == "back") {
                      System.out.println();
-                } else if (aggieID != null) {
+                } else if (userName  != null) {
                     System.out.println("Login Successful!");
+                    User user = returnUserData(userDatabase, userName);
                     // After successful login, show the user menu
-                    showUserMenu(scanner, userDatabase, aggieID);
+                    showUserMenu(scanner, userDatabase, userName , user);
                 } else {
                     // Invalid login attempt
                     System.out.println("User not found. Please try again.");
@@ -58,14 +60,44 @@ public class NMSUEZParking {
                         String fullName = parts[1];
                         boolean hasParkingPermit = Boolean.parseBoolean(parts[2]);
                         String parkingPermitType = parts[3];
-                        userDatabase.put(aggieID, new User(fullName, hasParkingPermit, parkingPermitType));
+                        userDatabase.put(aggieID, new User(aggieID, fullName, hasParkingPermit, parkingPermitType));
                     }
+
                 }
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
         }
     }
+
+        // Method to loadUserData
+        private static User returnUserData(Map<String, User> userDatabase, String userName) {
+            String aggieID = "", fullName = "", parkingPermitType = "";
+            boolean hasParkingPermit = false;
+            User userData = new User(aggieID, fullName, hasParkingPermit, parkingPermitType);
+    
+            File file = new File("user_data.txt");
+            if (file.exists()) {
+                try (Scanner fileScanner = new Scanner(file)) {
+                    while (fileScanner.hasNextLine()) {
+                        String line = fileScanner.nextLine();
+                        String[] parts = line.split(",");
+                        if (parts.length == 4) {
+                            aggieID = parts[0];
+                            fullName = parts[1];
+                            hasParkingPermit = Boolean.parseBoolean(parts[2]);
+                            parkingPermitType = parts[3];
+                            if (userName.equals(fullName))
+                            userData = new User(aggieID, fullName, hasParkingPermit, parkingPermitType);
+                        }
+    
+                    }
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+            }
+            return userData;
+        }
 
     // Method to saveUserData
     private static void saveUserData(Map<String, User> userDatabase) {
@@ -158,7 +190,7 @@ public class NMSUEZParking {
                             }
 
                             // Input data into .txt file
-                            userDatabase.put(aggieID, new User(fullName, hasParkingPermit, parkingPermitType));
+                            userDatabase.put(aggieID, new User(aggieID, fullName, hasParkingPermit, parkingPermitType));
                             saveUserData(userDatabase);
                             
                             System.out.println("Thank you for registering! Please sign back in with your info.");
@@ -205,10 +237,12 @@ public class NMSUEZParking {
     }
 
     // Method for showUserMenu
-    private static void showUserMenu(Scanner scanner, Map<String, User> userDatabase, String aggieID) {
+    public static void showUserMenu(Scanner scanner, Map<String, User> userDatabase, String aggieID, User user) {
+        String parkingType = user.getParkingPermitType();
+
         while (true) {
             System.out.println("\nThank you for Logging in, How can we help you?");
-            System.out.println("1. Find Parking");
+            System.out.println("1. Find Parking"); 
             System.out.println("2. Leave Parking");
             System.out.println("3. Search for Parking");
             System.out.println("4. Report Parking");
@@ -220,6 +254,14 @@ public class NMSUEZParking {
                 case "1":
                     // Implement the finding parking code here:
                     System.out.println("Finding Parking...");
+                    if (parkingType.equals("Commuter Permit (Green)")){
+                        System.out.println("You currently have Commuter Permit");
+                        commuterLots.printAvailableLotCOM();
+                    }
+                    else if (parkingType.equals("North Residential Parking (Yellow)")){
+                        System.out.println("You currently have North Residential Permit");
+                        NorthResidLots.printAvailableLotNR();
+                    }
                     break;
                 case "2":
                     // Implement the leaving parking code here:
@@ -242,6 +284,7 @@ public class NMSUEZParking {
             }
         }
     }
+
 
     // Method to report parking
     private static void reportParking(Scanner scanner, Map<String, User> userDatabase, String aggieID) {

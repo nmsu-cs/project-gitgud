@@ -1,12 +1,21 @@
 public class User {
+    private String aggieID;
     private String fullName;
     private boolean hasParkingPermit;
     private String parkingPermitType;
 
-    public User(String fullName, boolean hasParkingPermit, String parkingPermitType) {
+    public User(String aggieID,String fullName, boolean hasParkingPermit, String parkingPermitType) {
+        this.aggieID = aggieID;
         this.fullName = fullName;
         this.hasParkingPermit = hasParkingPermit;
         this.parkingPermitType = parkingPermitType;
+    }
+    public String getAggieID() {
+        return aggieID;
+    }
+
+    public void setAggieID(String aggieID) {
+        this.aggieID = aggieID;
     }
 
     public String getFullName() {
