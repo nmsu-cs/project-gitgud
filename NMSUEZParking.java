@@ -55,12 +55,14 @@ public class NMSUEZParking {
                 while (fileScanner.hasNextLine()) {
                     String line = fileScanner.nextLine();
                     String[] parts = line.split(",");
-                    if (parts.length == 4) {
+                    if (parts.length == 6) {
                         String aggieID = parts[0];
                         String fullName = parts[1];
                         boolean hasParkingPermit = Boolean.parseBoolean(parts[2]);
                         String parkingPermitType = parts[3];
-                        userDatabase.put(aggieID, new User(aggieID, fullName, hasParkingPermit, parkingPermitType));
+                        String currentParkAt = "";
+                        int currentParkNumAt = 0;
+                        userDatabase.put(aggieID, new User(aggieID, fullName, hasParkingPermit, parkingPermitType, currentParkAt, currentParkNumAt));
                     }
 
                 }
@@ -72,9 +74,10 @@ public class NMSUEZParking {
 
         // Method to loadUserData
         private static User returnUserData(Map<String, User> userDatabase, String userName) {
-            String aggieID = "", fullName = "", parkingPermitType = "";
+            String aggieID = "", fullName = "", parkingPermitType = "", currentParkAt = "";
             boolean hasParkingPermit = false;
-            User userData = new User(aggieID, fullName, hasParkingPermit, parkingPermitType);
+            int currentParkNumAt = 0;
+            User userData = new User(aggieID, fullName, hasParkingPermit, parkingPermitType, currentParkAt, currentParkNumAt);
     
             File file = new File("user_data.txt");
             if (file.exists()) {
@@ -82,13 +85,15 @@ public class NMSUEZParking {
                     while (fileScanner.hasNextLine()) {
                         String line = fileScanner.nextLine();
                         String[] parts = line.split(",");
-                        if (parts.length == 4) {
+                        if (parts.length == 6) {
                             aggieID = parts[0];
                             fullName = parts[1];
                             hasParkingPermit = Boolean.parseBoolean(parts[2]);
                             parkingPermitType = parts[3];
+                            currentParkAt = parts[4];
+                            currentParkNumAt = Integer.parseInt(parts[5]);
                             if (userName.equals(fullName))
-                            userData = new User(aggieID, fullName, hasParkingPermit, parkingPermitType);
+                            userData = new User(aggieID, fullName, hasParkingPermit, parkingPermitType, currentParkAt, currentParkNumAt);
                         }
     
                     }
@@ -116,6 +121,8 @@ public class NMSUEZParking {
         String fullName = null;
         boolean hasParkingPermit = false;
         String parkingPermitType = null;
+        String currentParkAt = null;
+        int currentParkNumAt = 0;
 
         do {
             System.out.print("Please enter your Aggie ID (9 digits long), or type 'back' to return to the main menu: ");
@@ -190,7 +197,7 @@ public class NMSUEZParking {
                             }
 
                             // Input data into .txt file
-                            userDatabase.put(aggieID, new User(aggieID, fullName, hasParkingPermit, parkingPermitType));
+                            userDatabase.put(aggieID, new User(aggieID, fullName, hasParkingPermit, parkingPermitType, currentParkAt, currentParkNumAt));
                             saveUserData(userDatabase);
                             
                             System.out.println("Thank you for registering! Please sign back in with your info.");
@@ -240,6 +247,7 @@ public class NMSUEZParking {
     public static void showUserMenu(Scanner scanner, Map<String, User> userDatabase, String aggieID, User user) {
         String parkingType = user.getParkingPermitType();
 
+        System.out.println(userDatabase);
         while (true) {
             System.out.println("\nThank you for Logging in, How can we help you?");
             System.out.println("1. Find Parking"); 
@@ -256,11 +264,11 @@ public class NMSUEZParking {
                     System.out.println("Finding Parking...");
                     if (parkingType.equals("Commuter Permit (Green)")){
                         System.out.println("You currently have Commuter Permit");
-                        commuterLots.printAvailableLotCOM();
+                        commuterLots.printAvailableLotCOM(user, userDatabase);
                     }
                     else if (parkingType.equals("North Residential Parking (Yellow)")){
                         System.out.println("You currently have North Residential Permit");
-                        NorthResidLots.printAvailableLotNR();
+                        NorthResidLots.printAvailableLotNR(user, userDatabase);
                     }
                     break;
                 case "2":

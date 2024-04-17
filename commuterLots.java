@@ -1,8 +1,9 @@
 import java.util.Scanner;
+import java.util.Map;
 
 public class commuterLots {
 
-    public static void printAvailableLotCOM(){
+    public static void printAvailableLotCOM(User user,  Map<String, User> userDatabase){
        try (Scanner scanner = new Scanner(System.in)) {
             while (true) {
                 System.out.println("\nThank you for Finding Parking, Which parking do you want to park?");
@@ -21,35 +22,35 @@ public class commuterLots {
                 switch (choice) {
                     case "1":
                         //Send to ODonald Parking 55
-                        ODonaldParking55();
+                        ODonaldParking55(user, userDatabase);
                         break;
                     case "2":
                         //Send to Bookstore Lot 16
-                        bookstoreLot16();
+                        bookstoreLot16(user, userDatabase);
                         break;
                     case "3":
                         //Send to Track Lot 100S
-                        trackLot100S();
+                        trackLot100S(user, userDatabase);
                         break;
                     case "4":
                         //Send to Satellite Lot 100
-                        allPermitLot.satelliteLot100();
+                        allPermitLot.satelliteLot100(user, userDatabase);
                         break;
                     case "5":
                         //Send to Rent Frow Lot 48
-                        allPermitLot.rentFrowLot48();
+                        allPermitLot.rentFrowLot48(user, userDatabase);
                         break;
                     case "6":
                         //Send to Skeens Lot 4
-                        allPermitLot.skeensLot4();
+                        allPermitLot.skeensLot4(user, userDatabase);
                         break;
                     case "7":
                         //Send to Chamisa Village Lot 38
-                        allPermitLot.chamisaVillageLot38();
+                        allPermitLot.chamisaVillageLot38(user, userDatabase);
                         break;
                     case "8":
                         //Send to Horseshoe Lot
-                        allPermitLot.horseshoeLot();
+                        allPermitLot.horseshoeLot(user, userDatabase);
                         break;
                     case "9":
                         System.out.println("Exiting to main menu...");
@@ -63,15 +64,15 @@ public class commuterLots {
 
     }
 
-    public static void ODonaldParking55(){
+    public static void ODonaldParking55(User user, Map<String, User> userDatabase){
         System.out.println("Hello welcome to the O'Donald parking lot");
     }
 
-    public static void bookstoreLot16(){
+    public static void bookstoreLot16(User user,  Map<String, User> userDatabase){
         System.out.println("Hello welcome to the Bookstore parking lot");
     }
 
-    public static void trackLot100S(){
+    public static void trackLot100S(User user,  Map<String, User> userDatabase){
         System.out.println("Hello welcome to the Track parking lot");
 
     }
