@@ -95,10 +95,24 @@ public class removeParkinglot {
             
      }
      public static void removeGaricaLot22(User user,  Map<String, User> userDatabase,String currentPark, int currentNumSlot) {
+        File file = new File("garicaLot22.txt");
+        int[] garicaLot22 = new int[150];
+
+        //adds the infomation to array
+        garicaLot22 = ParkingLot.sendParkinglotInfo(file, garicaLot22);
         
+        //Change the parking lot to avaible
+        ParkingLot.changeParkingToAvaible(file, garicaLot22, currentNumSlot);
      }
      public static void removePinonLot27(User user,  Map<String, User> userDatabase,String currentPark, int currentNumSlot) {
+        File file = new File("pinonLot27.txt");
+        int[] pinonLot27 = new int[150];
+
+        //adds the infomation to array
+        pinonLot27 = ParkingLot.sendParkinglotInfo(file, pinonLot27);
         
+        //Change the parking lot to avaible
+        ParkingLot.changeParkingToAvaible(file, pinonLot27, currentNumSlot);
      }
      public static void removeODonaldParking55(User user,  Map<String, User> userDatabase,String currentPark, int currentNumSlot) {
         

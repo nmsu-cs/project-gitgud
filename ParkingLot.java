@@ -116,8 +116,22 @@ public class ParkingLot {
     public static int[] sendParkinglotInfo(File file, int [] parkingLot){
         int parkingSlotNum = 1;
 
+        //Send if the text file is blank then create a new parking lot and send to the txt file
+        if (!file.exists()) {   
+            parkingLot = ParkingLot.createParkingLot(parkingLot);
+            try (PrintWriter writer = new PrintWriter(new FileWriter(file))) {
+                //input the parking Number and avaiable in txt file
+                for(int i = 0; i < parkingLot.length; i++){
+                    writer.println( parkingSlotNum + "," + parkingLot[i]);
+                    parkingSlotNum++;
+                }//end of for
+            } catch (IOException e) {
+                e.printStackTrace();
+            }//end of catch
+        }//end of if
+
          //If the file exits that will just read the text file
-         if (file.exists()) {
+         else if (file.exists()) {
             try (Scanner fileScanner = new Scanner(file)) {
 
                 //This scan the file and and input in the array
@@ -134,20 +148,6 @@ public class ParkingLot {
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
-        }
-
-        //Send if the text file is blank then create a new parking lot and send to the txt file
-        else if (!file.exists()) {   
-            parkingLot = ParkingLot.createParkingLot(parkingLot);
-            try (PrintWriter writer = new PrintWriter(new FileWriter("juniperLot.txt"))) {
-                //input the parking Number and avaiable in txt file
-                for(int i = 0; i < parkingLot.length; i++){
-                    writer.println( parkingSlotNum + "," + parkingLot[i]);
-                    parkingSlotNum++;
-                }//end of for
-            } catch (IOException e) {
-                e.printStackTrace();
-            }//end of catch
         }//end of else
 
         return parkingLot;
@@ -173,7 +173,7 @@ public class ParkingLot {
                             if (parkingNum == i){
                             parkingLot[i - 1] = 1;
                                 file.delete();
-                                try (PrintWriter writer = new PrintWriter(new FileWriter("juniperLot.txt"))) {
+                                try (PrintWriter writer = new PrintWriter(new FileWriter(file))) {
                                     for(int j = 0; j < parkingLot.length; j++){
                                         writer.println( parkingSlotNum + "," + parkingLot[j]);
                                         parkingSlotNum++;
@@ -211,7 +211,7 @@ public class ParkingLot {
                             parkingLot[i - 1] = 0;
                             parkingSlotNum = 1;
                                 file.delete();
-                                try (PrintWriter writer = new PrintWriter(new FileWriter("juniperLot.txt"))) {
+                                try (PrintWriter writer = new PrintWriter(new FileWriter(file))) {
                                     for(int j = 0; j < parkingLot.length; j++){
                                         writer.println( parkingSlotNum + "," + parkingLot[j]);
                                         parkingSlotNum++;

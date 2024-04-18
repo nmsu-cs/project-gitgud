@@ -115,10 +115,11 @@ public class Search {
         ParkingLot.displayAvaible(juniperLot);
      }
     
+
      public static void searchGaricaLot23(User user,  Map<String, User> userDatabase){
         System.out.println("Hello welcome to the  Searching Garcia 23 parking lot");
         File file = new File("garicaLot23.txt");
-        int[] garicaLot23 = new int[150];
+        int[] garicaLot23 = new int[100];
 
         //get the parking Information
         garicaLot23 = ParkingLot.sendParkinglotInfo(file, garicaLot23);
@@ -127,34 +128,58 @@ public class Search {
         ParkingLot.displayAvaible(garicaLot23);
      }
     
+
      public static void searchGaricaLot22(User user,  Map<String, User> userDatabase){
+        System.out.println("Hello welcome to the  Searching Garcia 22 parking lot");
+        File file = new File("garicaLot22.txt");
+        int[] garicaLot22 = new int[150];
 
+        //get the parking Information
+        garicaLot22 = ParkingLot.sendParkinglotInfo(file, garicaLot22);
+
+        //Display parking infomation
+        ParkingLot.displayAvaible(garicaLot22);
      }
-  
-     public static void searchPinonLot27(User user,  Map<String, User> userDatabase){
 
+
+     public static void searchPinonLot27(User user,  Map<String, User> userDatabase){
+        System.out.println("Hello welcome to the  Searching Pinon 27 parking lot");
+        File file = new File("pinonLot27.txt");
+        int[] pinonLot27 = new int[400];
+
+        //get the parking Information
+        pinonLot27 = ParkingLot.sendParkinglotInfo(file, pinonLot27);
+
+        //Display parking infomation
+        ParkingLot.displayAvaible(pinonLot27);
      }
     
+
      public static void searchTrackLot100S(User user,  Map<String, User> userDatabase){
 
      }
     
+
      public static void searchODonaldParking55(User user,  Map<String, User> userDatabase){
 
      }
      
+
      public static void searchBookstoreLot16(User user,  Map<String, User> userDatabase){
 
      }
      
+
      public static void searchSatelliteLot100(User user,  Map<String, User> userDatabase){
 
      }
     
+
      public static void searchRentFrowLot48(User user,  Map<String, User> userDatabase){
 
      }
  
+
      public static void searchSkeensLot4(User user,  Map<String, User> userDatabase){
 
      }
