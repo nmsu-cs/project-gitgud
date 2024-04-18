@@ -67,7 +67,9 @@ public class NorthResidLots {
                         break;
                     case "11":
                         System.out.println("Exiting to main menu...");
-                        return;
+                        System.out.println();
+                        System.out.println();
+                        NMSUEZParking.main(null);
                     default:
                         System.out.println("Invalid option. Please select a number between 1 and 11.");
                         break;

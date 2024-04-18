@@ -68,7 +68,6 @@ public class User {
         this.currentParkAt = currentParkAt;
     }
 
-
     public int getCurrentParkNumAt() {
         return currentParkNumAt;
     }
@@ -88,7 +87,6 @@ public class User {
         File file = new File("user_data.txt");
         String[] Database = new String[100000];
         int i = 0;
-        System.out.println(user);
 
         if (file.exists()) {
             try (Scanner fileScanner = new Scanner(file)) {
@@ -103,7 +101,6 @@ public class User {
                     else 
                        Database[i] = line; 
                        
-                    System.out.println(Database[i]);
                     i++;
                 }
             } catch (FileNotFoundException e) {
