@@ -17,11 +17,6 @@
             <AnchorPane layoutX="-259.0" layoutY="6.0" prefHeight="400.0" prefWidth="267.0">
                <children>
                   <ImageView fitHeight="66.0" fitWidth="108.0" layoutX="37.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fitHeight="64.0" fitWidth="67.0" layoutX="74.0" layoutY="15.0">
-                     <image>
-                        <Image url="@../img/gitgudlogo.jpeg" />
-                     </image>
-                  </ImageView>
                   <Label layoutX="2.0" layoutY="100.0" text="Sign in to continue" textFill="WHITE">
                      <font>
                         <Font name="Verdana Bold" size="20.0" />
@@ -41,6 +36,11 @@
                   <PasswordField fx:id="aggieIDTextField" layoutX="71.0" layoutY="203.0" prefHeight="26.0" prefWidth="191.0" />
                   <Button fx:id="homeButton" layoutX="-14.0" layoutY="280.0" mnemonicParsing="false" onAction="#homeButtonPressed" prefHeight="26.0" prefWidth="260.0" text="Login" />
                   <Button fx:id="newUserButton" layoutX="-13.0" layoutY="325.0" mnemonicParsing="false" onAction="#newUserButtonPressed" prefHeight="26.0" prefWidth="257.0" text="New User?" textFill="#a91313" />
+                  <ImageView fitHeight="87.0" fitWidth="129.0" layoutX="64.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/NMSUEZPARKINGLOGO.jpeg" />
+                     </image>
+                  </ImageView>
                </children>
             </AnchorPane>
             <ImageView fitHeight="414.0" fitWidth="281.0" layoutX="18.0" layoutY="-4.0" pickOnBounds="true" preserveRatio="true">
@@ -66,7 +66,4 @@
          </children>
       </AnchorPane>
    </right>
-   <bottom>
-      <Label text="Label" BorderPane.alignment="CENTER" />
-   </bottom>
 </BorderPane>

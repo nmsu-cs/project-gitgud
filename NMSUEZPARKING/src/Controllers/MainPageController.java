@@ -1,9 +1,9 @@
 package Controllers;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import User.User;
+import User.UserDataLoader;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -29,12 +29,12 @@ public class MainPageController {
     @FXML
     private Button exitButton;
 
-    private Map<String, User> userDatabase = new HashMap<>();
+    private Map<String, User> userDatabase = UserDataLoader.getUserDatabase();
 
     @FXML
     private void initialize() {
         // Load existing user data from file (if any)
-        User.loadUserData(userDatabase);
+        UserDataLoader.loadUserData();
     }
 
     @FXML
@@ -61,7 +61,13 @@ public class MainPageController {
                     Scene secondaryScene = new Scene(root, 600, 400);
                     stage.setScene(secondaryScene);
                     stage.setTitle("Welcome back");
-        
+                    
+                    //show the new scene 
+                    stage.show();
+
+                    //Exit the method after successsfully finding the user
+                    return;
+
                 }catch(Exception e){
                     e.printStackTrace();
                 }
@@ -87,6 +93,3 @@ public class MainPageController {
         }
     }//end newUserButtonPressed method
 }
-
-
-
