@@ -11,49 +11,61 @@ public class removeParkinglot {
                 break;
 
             case "Garica Lot 23":
-                removeJuniperLot19(user, userDatabase, currentPark, currentNumSlot);
+                removeGaricaLot23(user, userDatabase, currentPark, currentNumSlot);
                 break;
 
             case "Garica Lot 22":
-                removeJuniperLot19(user, userDatabase, currentPark, currentNumSlot);
+                removeGaricaLot22(user, userDatabase, currentPark, currentNumSlot);
                 break;
 
             case "Pinon Lot":
-                removeJuniperLot19(user, userDatabase, currentPark, currentNumSlot);
+                removePinonLot27(user, userDatabase, currentPark, currentNumSlot);
                 break;
 
             case "Track Lot 100S":
-                removeJuniperLot19(user, userDatabase, currentPark, currentNumSlot);
+                removeTrackLot100S(user, userDatabase, currentPark, currentNumSlot);
                 break;
 
             case "O'Donald Lot":
-                removeJuniperLot19(user, userDatabase, currentPark, currentNumSlot);
+                removeODonaldParking55(user, userDatabase, currentPark, currentNumSlot);
                 break;
 
             case "Bookstore Lot":
-                removeJuniperLot19(user, userDatabase, currentPark, currentNumSlot);
+                removeBookstoreLot16(user, userDatabase, currentPark, currentNumSlot);
                 break;
 
             case "Satellite Lot":
-                removeJuniperLot19(user, userDatabase, currentPark, currentNumSlot);
+                removeSatelliteLot100(user, userDatabase, currentPark, currentNumSlot);
                 break;
 
             case "Rent Frow Lot":
-                removeJuniperLot19(user, userDatabase, currentPark, currentNumSlot);
+                removeRentFrowLot48(user, userDatabase, currentPark, currentNumSlot);
                 break;
 
             case "Skeens Lot":
-                removeJuniperLot19(user, userDatabase, currentPark, currentNumSlot);
+                removeSkeensLot4(user, userDatabase, currentPark, currentNumSlot);
                 break;
 
             case "Chamisa Village Lot":
-                removeJuniperLot19(user, userDatabase, currentPark, currentNumSlot);
+                removeChamisaVillageLot38(user, userDatabase, currentPark, currentNumSlot);
                 break;
 
             case "Horseshoe Lot":
-                removeJuniperLot19(user, userDatabase, currentPark, currentNumSlot);
+                removeHorseshoeLot(user, userDatabase, currentPark, currentNumSlot);
                 break; 
 
+             case "Science Hall lot":
+                removeScienceHallLot58(user, userDatabase, currentPark, currentNumSlot);
+                break;
+
+            case "Corbett lot":
+                removeCorbettLot17(user, userDatabase, currentPark, currentNumSlot);
+                break;
+
+            case "Zuhl Libaray lot":
+                removeLibarayLot45(user, userDatabase, currentPark, currentNumSlot);
+                break; 
+            
             default:
                 System.out.println("Invalid option. Please select a number between 1 and 9.");
                 break;
@@ -169,6 +181,15 @@ public class removeParkinglot {
         
      }
      public static void removeHorseshoeLot(User user,  Map<String, User> userDatabase,String currentPark, int currentNumSlot) {
+        
+     }
+     public static void removeScienceHallLot58(User user,  Map<String, User> userDatabase,String currentPark, int currentNumSlot) {
+        
+     }
+     public static void removeCorbettLot17(User user,  Map<String, User> userDatabase,String currentPark, int currentNumSlot) {
+        
+     }
+     public static void removeLibarayLot45(User user,  Map<String, User> userDatabase,String currentPark, int currentNumSlot) {
         
      }
  

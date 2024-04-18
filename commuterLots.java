@@ -54,7 +54,9 @@ public class commuterLots {
                         break;
                     case "9":
                         System.out.println("Exiting to main menu...");
-                        return;
+                        System.out.println();
+                        System.out.println();
+                        NMSUEZParking.main(null);
                     default:
                         System.out.println("Invalid option. Please select a number between 1 and 9.");
                         break;

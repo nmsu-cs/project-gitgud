@@ -269,14 +269,28 @@ public class NMSUEZParking {
                         System.out.println("You currently have North Residential Permit");
                         NorthResidLots.printAvailableLotNR(user, userDatabase);
                     }
+                    else if (parkingType.equals("Faculty Parking (Maroon)")){
+                        System.out.println("You currently have Faculty Permit");
+                        FacultyLots.printAvailableLotFAC(user, userDatabase);
+                    }
                     break;
                 case "2":
                     // Implement the leaving parking code here:
                     System.out.println("Leaving Parking...");
+                    String currentPark = user.getCurrentParkAt();
+                    int currentParkNum = user.getCurrentParkNumAt();
+                    removeParkinglot.RemoveParkingLot(user, userDatabase, currentPark, currentParkNum);
+
+                    user.setCurrentParkAt("");
+                    user.setCurrentParkNumAt(0);
+                    userDatabase.replace(aggieID, user);
+                    User.changeUserInfo(user, userDatabase);
+
                     break;
                 case "3":
                     // Implement the searching for parking code here:
                     System.out.println("Searching for Parking...");
+                    Search.SearchParkingLot(user, userDatabase);
                     break;
                 case "4":
                     // Call the reportParking method

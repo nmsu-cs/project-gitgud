@@ -110,7 +110,4 @@ public class ParkingLot {
         return false;
     }
 
-    public static void clearParkingSpot(){
-        
-    }
 }
