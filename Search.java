@@ -97,6 +97,8 @@ public class Search {
                 System.out.println("Invalid option. Please select a number between 1 and 9.");
                 break;
         }
+        
+        NMSUEZParking.showUserMenu(scanner = new Scanner(System.in), userDatabase, user.getAggieID() , user);
         scanner.close();
      }
 
@@ -111,7 +113,6 @@ public class Search {
 
         //Display parking infomation
         ParkingLot.displayAvaible(juniperLot);
-        NMSUEZParking.main(null);
      }
     
      public static void searchGaricaLot23(User user,  Map<String, User> userDatabase){
@@ -124,7 +125,6 @@ public class Search {
 
         //Display parking infomation
         ParkingLot.displayAvaible(garicaLot23);
-        NMSUEZParking.main(null);
      }
     
      public static void searchGaricaLot22(User user,  Map<String, User> userDatabase){
