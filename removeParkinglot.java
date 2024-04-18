@@ -75,83 +75,24 @@ public class removeParkinglot {
      public static void removeJuniperLot19(User user,  Map<String, User> userDatabase,String currentPark, int currentNumSlot) {
         File file = new File("juniperLot.txt");
         int[] juniperLot = new int[250];
-        int parkingSlotNum = 1;
 
-           //If the file exits that will just read the text file
-           if (file.exists()) {
-            try (Scanner fileScanner = new Scanner(file)) {
-
-                //This scan the file and and input in the array
-                while (fileScanner.hasNextLine()) {
-                    String line = fileScanner.nextLine();
-                    String[] parts = line.split(",");
-                    //reads if the parts in the file then input in the array
-                    if (parts.length == 2) {
-                        int i = Integer.parseInt(parts[0]);
-                        int available = Integer.parseInt(parts[1]);
-                        juniperLot[i-1] = available;
-                    }//end of if
-                }
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-        }
-
-        //Send if the text file is blank then create a new parking lot and send to the txt file
-        else if (!file.exists()) { 
-            System.out.println("Parking lot was restarted");
-            juniperLot = ParkingLot.createParkingLot(juniperLot);
-            try (PrintWriter writer = new PrintWriter(new FileWriter("juniperLot.txt"))) {
-                //input the parking Number and avaiable in txt file
-                for(int i = 0; i < juniperLot.length; i++){
-                    writer.println( parkingSlotNum + "," + juniperLot[i]);
-                    parkingSlotNum++;
-                }//end of for
-            } catch (IOException e) {
-                e.printStackTrace();
-            }//end of catch
-        }//end of else
-
-        //If the user input the correct parking then read the file until find the parking number in the file.
-            //It will change the number to 1 (Unavaible) in the array
-            //delete the whole file then reprint the whole
-            if(file.exists()){
-                try (Scanner fileScanner = new Scanner(file)) {
-                    parkingSlotNum = 1;
-
-                    //This scan the file and and input in the array
-                    while (fileScanner.hasNextLine()) {
-                        String line = fileScanner.nextLine();
-                        String[] parts = line.split(",");
-                        if (parts.length == 2) {
-                            int i = Integer.parseInt(parts[0]);
-                            // System.out.println("The slot number: " + i + " available " + juniperLot[i-1]);
-                        
-                            if (currentNumSlot == parkingSlotNum){
-                            juniperLot[i - 1] = 0;
-                            parkingSlotNum = 1;
-                                file.delete();
-                                try (PrintWriter writer = new PrintWriter(new FileWriter("juniperLot.txt"))) {
-                                    for(int j = 0; j < juniperLot.length; j++){
-                                        writer.println( parkingSlotNum + "," + juniperLot[j]);
-                                        parkingSlotNum++;
-                                    }
-                                    System.out.println("Parking has been removed");
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                }
-                            }//end of inner if
-                        }//end of out if
-                        parkingSlotNum++;
-                    }//end of while
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                }
-            }
+        //adds the infomation to array
+        juniperLot = ParkingLot.sendParkinglotInfo(file, juniperLot);
+        
+        //Change the parking lot to avaible
+        ParkingLot.changeParkingToAvaible(file, juniperLot, currentNumSlot);
             
      }
      public static void removeGaricaLot23(User user,  Map<String, User> userDatabase,String currentPark, int currentNumSlot) {
+        File file = new File("garicaLot23.txt");
+        int[] garicaLot23 = new int[150];
+
+        //adds the infomation to array
+        garicaLot23 = ParkingLot.sendParkinglotInfo(file, garicaLot23);
         
+        //Change the parking lot to avaible
+        ParkingLot.changeParkingToAvaible(file, garicaLot23, currentNumSlot);
+            
      }
      public static void removeGaricaLot22(User user,  Map<String, User> userDatabase,String currentPark, int currentNumSlot) {
         

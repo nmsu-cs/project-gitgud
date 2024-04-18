@@ -105,48 +105,26 @@ public class Search {
         System.out.println("Hello welcome to the  Searching Juniper parking lot");
         File file = new File("juniperLot.txt");
         int[] juniperLot = new int[250];
-        int parkingSlotNum = 1;
 
-        //If the file exits that will just read the text file
-        if (file.exists()) {
-            try (Scanner fileScanner = new Scanner(file)) {
+        //get the parking Information
+        juniperLot = ParkingLot.sendParkinglotInfo(file, juniperLot);
 
-                //This scan the file and and input in the array
-                while (fileScanner.hasNextLine()) {
-                    String line = fileScanner.nextLine();
-                    String[] parts = line.split(",");
-                    //reads if the parts in the file then input in the array
-                    if (parts.length == 2) {
-                        int i = Integer.parseInt(parts[0]);
-                        int available = Integer.parseInt(parts[1]);
-                        juniperLot[i-1] = available;
-                    }//end of if
-                }
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-        }
-
-        //Send if the text file is blank then create a new parking lot and send to the txt file
-        else if (!file.exists()) {   
-            juniperLot = ParkingLot.createParkingLot(juniperLot);
-            try (PrintWriter writer = new PrintWriter(new FileWriter("juniperLot.txt"))) {
-                //input the parking Number and avaiable in txt file
-                for(int i = 0; i < juniperLot.length; i++){
-                    writer.println( parkingSlotNum + "," + juniperLot[i]);
-                    parkingSlotNum++;
-                }//end of for
-            } catch (IOException e) {
-                e.printStackTrace();
-            }//end of catch
-        }//end of else
-
+        //Display parking infomation
         ParkingLot.displayAvaible(juniperLot);
         NMSUEZParking.main(null);
      }
     
      public static void searchGaricaLot23(User user,  Map<String, User> userDatabase){
+        System.out.println("Hello welcome to the  Searching Garcia 23 parking lot");
+        File file = new File("garicaLot23.txt");
+        int[] garicaLot23 = new int[150];
 
+        //get the parking Information
+        garicaLot23 = ParkingLot.sendParkinglotInfo(file, garicaLot23);
+
+        //Display parking infomation
+        ParkingLot.displayAvaible(garicaLot23);
+        NMSUEZParking.main(null);
      }
     
      public static void searchGaricaLot22(User user,  Map<String, User> userDatabase){
