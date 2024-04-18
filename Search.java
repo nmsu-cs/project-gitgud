@@ -98,7 +98,7 @@ public class Search {
                 break;
         }
         
-        NMSUEZParking.showUserMenu(scanner = new Scanner(System.in), userDatabase, user.getAggieID() , user);
+        NMSUEZParking.showUserMenu(scanner, userDatabase, user.getAggieID() , user);
         scanner.close();
      }
 
