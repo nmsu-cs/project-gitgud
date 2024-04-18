@@ -43,7 +43,7 @@ public class NorthResidLots {
                         break;
                     case "5":
                         //Send to Track Lot 100S
-                        trackLot100S(user, userDatabase);
+                        allPermitLot.trackLot100S(user, userDatabase);
                         break;
                     case "6":
                         //Send to Satellite Lot 100
@@ -81,101 +81,130 @@ public class NorthResidLots {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Hello welcome to the Juniper parking lot");
         int parkingSlotNum = 1;
-        int[] juniperLot = new int[250]; 
-
-        File file = new File("juniperLot.txt");
-
-        //If the file exits that will just read the text file
-        if (file.exists()) {
-            try (Scanner fileScanner = new Scanner(file)) {
-
-                //This scan the file and and input in the array
-                while (fileScanner.hasNextLine()) {
-                    String line = fileScanner.nextLine();
-                    String[] parts = line.split(",");
-                    //reads if the parts in the file then input in the array
-                    if (parts.length == 2) {
-                        int i = Integer.parseInt(parts[0]);
-                        int available = Integer.parseInt(parts[1]);
-                        juniperLot[i-1] = available;
-                    }//end of if
-                }
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-        }
-
-        //Send if the text file is blank then create a new parking lot and send to the txt file
-        else {   
-            juniperLot = ParkingLot.createParkingLot(juniperLot);
-            try (PrintWriter writer = new PrintWriter(new FileWriter("juniperLot.txt"))) {
-                //input the parking Number and avaiable in txt file
-                for(int i = 0; i < juniperLot.length; i++){
-                    writer.println( parkingSlotNum + "," + juniperLot[i]);
-                    parkingSlotNum++;
-                }//end of for
-            } catch (IOException e) {
-                e.printStackTrace();
-            }//end of catch
-        }//end of else
-
-        ParkingLot.displayAvaible(juniperLot);
-        System.out.println("Which parking do you want to park?");
-        int userCount = scanner.nextInt();
-
-        //Asking user to input the correct parking number
-        while(userCount > juniperLot.length || userCount < 0 || juniperLot[userCount-1] == 1){
-            System.out.println("The parking number is invaild please entered new parking spot");
-            System.out.println();
-            System.out.println();
-            ParkingLot.displayAvaible(juniperLot);
-            userCount = scanner.nextInt();
-        }
-
-        //If the user input the correct parking then read the file until find the parking number in the file.
-        //It will change the number to 1 (Unavaible) in the array
-        //delete the whole file then reprint the whole
-        if(userCount < juniperLot.length || userCount > 0 || juniperLot[userCount-1] == 0){
-            try (Scanner fileScanner = new Scanner(file)) {
-
-                //This scan the file and and input in the array
-                while (fileScanner.hasNextLine()) {
-                    String line = fileScanner.nextLine();
-                    String[] parts = line.split(",");
-                    if (parts.length == 2) {
-                        int i = Integer.parseInt(parts[0]);
-                        // System.out.println("The slot number: " + i + " available " + juniperLot[i-1]);
-                      
-                        if (userCount == i){
-                           juniperLot[i - 1] = 1;
-                            file.delete();
-                            try (PrintWriter writer = new PrintWriter(new FileWriter("juniperLot.txt"))) {
-                                for(int j = 0; j < juniperLot.length; j++){
-                                    writer.println( parkingSlotNum + "," + juniperLot[j]);
-                                    parkingSlotNum++;
-                                }
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                        }//end of inner if
-                    }//end of out if
-                }//end of while
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-        }
-        user.setCurrentParkAt("Juniper Lot");
-        user.setCurrentParkNumAt(userCount);
-
-        System.out.println(user);
+        int[] juniperLot = new int[250];
+        String currentPark = user.getCurrentParkAt();
         String aggieID = user.getAggieID();
-        userDatabase.replace(aggieID, user);
-        System.out.println(userDatabase);
-        User.changeUserInfo(user, userDatabase);
+        File file = new File("juniperLot.txt");
+        
+        if(!currentPark.equals("")){
+            System.out.println("You current registered as parked.");
+            System.out.println("Do you want to park in a new Parking spot: (yes/no)");
+            String userInput = scanner.nextLine();
+
+            switch (userInput) {
+                case "yes":
+                    System.out.println("You have choice to parked in a new parking spot");
+                    int numSlotParkedAt = user.getCurrentParkNumAt();
+                    user.setCurrentParkAt("");
+                    user.setCurrentParkNumAt(0);
+
+                    userDatabase.replace(aggieID, user);
+                    User.changeUserInfo(user, userDatabase);
+
+                    removeParkinglot.RemoveParkingLot(user, userDatabase, currentPark, numSlotParkedAt);
+                    break;
+                case "no":
+                    System.out.println("Thank you for your time! Have have choices no");
+                break;
+            
+                default:
+                    System.out.println("This is an invalid input. Please enter yes or no");
+                    break;
+            }
+        }
+        else{
+
+            //If the file exits that will just read the text file
+            if (file.exists()) {
+                try (Scanner fileScanner = new Scanner(file)) {
+
+                    //This scan the file and and input in the array
+                    while (fileScanner.hasNextLine()) {
+                        String line = fileScanner.nextLine();
+                        String[] parts = line.split(",");
+                        //reads if the parts in the file then input in the array
+                        if (parts.length == 2) {
+                            int i = Integer.parseInt(parts[0]);
+                            int available = Integer.parseInt(parts[1]);
+                            juniperLot[i-1] = available;
+                        }//end of if
+                    }
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            //Send if the text file is blank then create a new parking lot and send to the txt file
+            else if (!file.exists()) {   
+                juniperLot = ParkingLot.createParkingLot(juniperLot);
+                try (PrintWriter writer = new PrintWriter(new FileWriter("juniperLot.txt"))) {
+                    //input the parking Number and avaiable in txt file
+                    for(int i = 0; i < juniperLot.length; i++){
+                        writer.println( parkingSlotNum + "," + juniperLot[i]);
+                        parkingSlotNum++;
+                    }//end of for
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }//end of catch
+            }//end of else
 
 
-       
-        scanner.close();
+            ParkingLot.displayAvaible(juniperLot);
+            System.out.println("Which parking do you want to park?");
+            int userCount = scanner.nextInt();
+
+            //Asking user to input the correct parking number
+            while(userCount > juniperLot.length || userCount < 0 || juniperLot[userCount-1] == 1){
+                System.out.println("The parking number is invaild please entered new parking spot");
+                System.out.println();
+                System.out.println();
+                ParkingLot.displayAvaible(juniperLot);
+                userCount = scanner.nextInt();
+            }
+
+            //If the user input the correct parking then read the file until find the parking number in the file.
+            //It will change the number to 1 (Unavaible) in the array
+            //delete the whole file then reprint the whole
+            if(userCount < juniperLot.length || userCount > 0 || juniperLot[userCount-1] == 0){
+                try (Scanner fileScanner = new Scanner(file)) {
+                    parkingSlotNum = 1;
+
+                    //This scan the file and and input in the array
+                    while (fileScanner.hasNextLine()) {
+                        String line = fileScanner.nextLine();
+                        String[] parts = line.split(",");
+                        if (parts.length == 2) {
+                            int i = Integer.parseInt(parts[0]);
+                            // System.out.println("The slot number: " + i + " available " + juniperLot[i-1]);
+                        
+                            if (userCount == i){
+                            juniperLot[i - 1] = 1;
+                                file.delete();
+                                try (PrintWriter writer = new PrintWriter(new FileWriter("juniperLot.txt"))) {
+                                    for(int j = 0; j < juniperLot.length; j++){
+                                        writer.println( parkingSlotNum + "," + juniperLot[j]);
+                                        parkingSlotNum++;
+                                    }
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+                            }//end of inner if
+                        }//end of out if
+                    }//end of while
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+            }
+            user.setCurrentParkAt("Juniper Lot");
+            user.setCurrentParkNumAt(userCount);
+
+            userDatabase.replace(aggieID, user);
+            User.changeUserInfo(user, userDatabase);
+
+
+        
+            scanner.close();
+        }//end of else
     }
 
     public static void garicaLot23(User user, Map<String, User> userDatabase){
@@ -188,9 +217,5 @@ public class NorthResidLots {
     
     public static void pinonLot27(User user, Map<String, User> userDatabase){
         System.out.println("Hello welcome to the Pinon parking lot");  
-    }
-
-    public static void trackLot100S(User user, Map<String, User> userDatabase){
-        System.out.println("Hello welcome to the Track parking lot");  
     }
 }

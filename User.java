@@ -88,24 +88,23 @@ public class User {
         File file = new File("user_data.txt");
         String[] Database = new String[100000];
         int i = 0;
+        System.out.println(user);
 
         if (file.exists()) {
             try (Scanner fileScanner = new Scanner(file)) {
                 while (fileScanner.hasNextLine()) {
                     String line = fileScanner.nextLine();
                     String[] parts = line.split(",");
-                    if (parts.length == 6) {
-                        String aggieID = parts[0];
-                       if(aggieID != user.getAggieID()){
-                        Database[i] = line;
-                       }
-                       else {
+                    String aggieID = parts[0];
+                    if(aggieID.equals(user.getAggieID()))
                         Database[i] = (user.getAggieID() + "," + user.getFullName() + "," + user.getHasParkingPermit()
                         + "," + user.getParkingPermitType() + "," + user.getCurrentParkAt() + "," + user.getCurrentParkNumAt());
-                       }
-                    }
+                       
+                    else 
+                       Database[i] = line; 
+                       
+                    System.out.println(Database[i]);
                     i++;
-
                 }
             } catch (FileNotFoundException e) {
                 e.printStackTrace();

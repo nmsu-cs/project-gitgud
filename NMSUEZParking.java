@@ -121,7 +121,7 @@ public class NMSUEZParking {
         String fullName = null;
         boolean hasParkingPermit = false;
         String parkingPermitType = null;
-        String currentParkAt = null;
+        String currentParkAt = "";
         int currentParkNumAt = 0;
 
         do {
@@ -247,7 +247,6 @@ public class NMSUEZParking {
     public static void showUserMenu(Scanner scanner, Map<String, User> userDatabase, String aggieID, User user) {
         String parkingType = user.getParkingPermitType();
 
-        System.out.println(userDatabase);
         while (true) {
             System.out.println("\nThank you for Logging in, How can we help you?");
             System.out.println("1. Find Parking"); 

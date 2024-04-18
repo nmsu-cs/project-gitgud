@@ -30,7 +30,7 @@ public class commuterLots {
                         break;
                     case "3":
                         //Send to Track Lot 100S
-                        trackLot100S(user, userDatabase);
+                        allPermitLot.trackLot100S(user, userDatabase);
                         break;
                     case "4":
                         //Send to Satellite Lot 100
@@ -70,11 +70,6 @@ public class commuterLots {
 
     public static void bookstoreLot16(User user,  Map<String, User> userDatabase){
         System.out.println("Hello welcome to the Bookstore parking lot");
-    }
-
-    public static void trackLot100S(User user,  Map<String, User> userDatabase){
-        System.out.println("Hello welcome to the Track parking lot");
-
     }
 
     

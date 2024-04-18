@@ -22,4 +22,9 @@ public class allPermitLot {
     public static void chamisaVillageLot38(User user, Map<String, User> userDatabase){
         System.out.println("Hello welcome to the Chamisa Village parking lot");
     }
+
+    public static void trackLot100S(User user,  Map<String, User> userDatabase){
+        System.out.println("Hello welcome to the Track parking lot");
+
+    }
 }
