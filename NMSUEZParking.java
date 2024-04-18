@@ -290,6 +290,7 @@ public class NMSUEZParking {
                 case "3":
                     // Implement the searching for parking code here:
                     System.out.println("Searching for Parking...");
+                    Search.SearchParkingLot(user, userDatabase);
                     break;
                 case "4":
                     // Call the reportParking method
