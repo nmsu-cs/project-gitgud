@@ -1,11 +1,7 @@
 package Controllers;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.swing.Action;
-
 import User.User;
+import User.UserDataLoader;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,8 +11,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import java.io.IOException;
 
 public class NewUserController {
     @FXML
@@ -40,13 +36,9 @@ public class NewUserController {
     // Instance variables to store checkbox states
     private boolean isYesSelected = false;
     private boolean isNoSelected = false;
-    private Map<String, User> userDatabase = new HashMap<>();
 
     @FXML
     private void initialize() {
-        // Load existing user data from file (if any)
-        User.loadUserData(userDatabase);
-
         // Add event handlers to CheckBoxes
         yesCheckBox.setOnAction(event -> {
             isYesSelected = yesCheckBox.isSelected();
@@ -86,13 +78,44 @@ public class NewUserController {
         if (!aggieID.matches("\\d{9}")) {
             System.out.println("Invalid input. Aggie ID must be 9 digits long. Please try again.");
             return;
-        } else if (userDatabase.containsKey(aggieID)) {
-            User existingUser = userDatabase.get(aggieID);
-            System.out.println("User with this Aggie ID is already been registered:");
-            return;
         }
+
+        // If user selects "No" for parking permit, navigate to sample4nopermit.fxml
+        if (isNoSelected) {
+            try {
+                Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+                Parent root = FXMLLoader.load(getClass().getResource("/FXML/sample4nopermit.fxml"));
+                Scene newScene = new Scene(root, 600, 400);
+                stage.setScene(newScene);
+                stage.setTitle("No Parking Permit");
+                stage.show();
+                return; // Stop further processing
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
         // Create a string to represent the parking permit status
         String parkingPermitStatus = isYesSelected ? "Yes" : "No";
+
+        // Create a new User object
+        User newUser = new User(aggieID, firstName + " " + lastName, isYesSelected, "");
+
+        // Add the new user to the user database
+        UserDataLoader.addUser(newUser);
+
+        // Optionally, you can provide feedback to the user that the registration was successful
+        System.out.println("User registration successful!");
+
+        // Clear input fields and checkboxes
+        aggieIDTextField.clear();
+        firstNameTextField.clear();
+        lastNameTextField.clear();
+        yesCheckBox.setSelected(false);
+        noCheckBox.setSelected(false);
+
+        // Navigate back to the main menu
+        backButtonPressed(event);
     }
 
     @FXML
