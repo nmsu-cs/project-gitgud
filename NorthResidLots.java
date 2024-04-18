@@ -117,7 +117,7 @@ public class NorthResidLots {
             //Collecting the data of parkingLot
             juniperLot = ParkingLot.sendParkinglotInfo(file, juniperLot);
             ParkingLot.displayAvaible(juniperLot);
-            System.out.println("Which parking do you want to park?");
+            System.out.println("Which parking spot do you want to park?");
             int userCount = scanner.nextInt();
 
             //Asking user to input the correct parking number
@@ -137,6 +137,7 @@ public class NorthResidLots {
             userDatabase.replace(aggieID, user);
             User.changeUserInfo(user, userDatabase);
 
+            NMSUEZParking.showUserMenu(scanner = new Scanner(System.in), userDatabase, user.getAggieID() , user);
             scanner.close();
         }//end of else
     }

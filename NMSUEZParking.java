@@ -246,6 +246,7 @@ public class NMSUEZParking {
     // Method for showUserMenu
     public static void showUserMenu(Scanner scanner, Map<String, User> userDatabase, String aggieID, User user) {
         String parkingType = user.getParkingPermitType();
+        scanner = new Scanner(System.in);
 
         while (true) {
             System.out.println("\nThank you for Logging in, How can we help you?");
@@ -297,7 +298,8 @@ public class NMSUEZParking {
                     reportParking(scanner, userDatabase, aggieID);
                     break;
                 case "5":
-                    System.out.println("Exiting to main menu...");
+                    System.out.println("Exiting to main menu...\n\n");
+                    main(null);
                     return;
                 default:
                     System.out.println("Invalid option. Please select a number between 1 and 5.");
