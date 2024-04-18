@@ -110,6 +110,7 @@ public class NorthResidLots {
             
                 default:
                     System.out.println("This is an invalid input. Please enter yes or no");
+                    juniperLot19(user, userDatabase);
                     break;
             }
         }
@@ -174,6 +175,7 @@ public class NorthResidLots {
             
                 default:
                     System.out.println("This is an invalid input. Please enter yes or no");
+                    garicaLot23(user, userDatabase);
                     break;
             }
         }

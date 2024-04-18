@@ -64,7 +64,6 @@ public class NMSUEZParking {
                         int currentParkNumAt = 0;
                         userDatabase.put(aggieID, new User(aggieID, fullName, hasParkingPermit, parkingPermitType, currentParkAt, currentParkNumAt));
                     }
-
                 }
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
