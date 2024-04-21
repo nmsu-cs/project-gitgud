@@ -64,9 +64,7 @@ public class NorthResidLots {
                         allPermitLot.horseshoeLot(user, userDatabase);
                         break;
                     case "11":
-                        System.out.println("Exiting to main menu...");
-                        System.out.println();
-                        System.out.println();
+                        System.out.println("Exiting to the main menu...\n\n");
                         NMSUEZParking.main(null);
                     default:
                         System.out.println("Invalid option. Please select a number between 1 and 11.");
@@ -94,7 +92,7 @@ public class NorthResidLots {
 
             switch (userInput) {
                 case "yes":
-                    System.out.println("You have choice to parked in a new parking spot");
+                    System.out.println("You have chose to parked in a new parking spot");
                     int numSlotParkedAt = user.getCurrentParkNumAt();
                     user.setCurrentParkAt("");
                     user.setCurrentParkNumAt(0);
@@ -105,7 +103,7 @@ public class NorthResidLots {
                     removeParkinglot.RemoveParkingLot(user, userDatabase, currentPark, numSlotParkedAt);
                     break;
                 case "no":
-                    System.out.println("Thank you for your time! Have have choices no");
+                    System.out.println("Thank you for your time!");
                     NMSUEZParking.main(null);
                 break;
             
@@ -115,23 +113,21 @@ public class NorthResidLots {
                     break;
             }
         }
-        else{
+        else {
             //Collecting the data of parkingLot
             juniperLot = ParkingLot.sendParkinglotInfo(file, juniperLot);
-            ParkingLot.displayAvaible(juniperLot);
+            ParkingLot.displayAvailable(juniperLot);
             System.out.println("Which parking spot do you want to park?");
             int userCount = scanner.nextInt();
 
             //Asking user to input the correct parking number
             while(userCount > juniperLot.length || userCount < 0 || juniperLot[userCount-1] == 1){
-                System.out.println("The parking number is invaild please entered new parking spot");
-                System.out.println();
-                System.out.println();
-                ParkingLot.displayAvaible(juniperLot);
+                System.out.println("The parking number is invalid. Please enter a new parking spot.\n\n");
+                ParkingLot.displayAvailable(juniperLot);
                 userCount = scanner.nextInt();
             }
             //Change the parking Info
-            ParkingLot.changeParkingToUnavaible(file, juniperLot, userCount);
+            ParkingLot.changeParkingToUnavailable(file, juniperLot, userCount);
             
             //Change user Info
             user.setCurrentParkAt("Juniper Lot");
@@ -186,20 +182,18 @@ public class NorthResidLots {
             //Collecting the data of parkingLot
             garciaLot23 = ParkingLot.sendParkinglotInfo(file, garciaLot23);
            
-            ParkingLot.displayAvaible(garciaLot23);
+            ParkingLot.displayAvailable(garciaLot23);
             System.out.println("Which parking do you want to park?");
             int userCount = scanner.nextInt();
 
             //Asking user to input the correct parking number
             while(userCount > garciaLot23.length || userCount < 0 || garciaLot23[userCount-1] == 1){
-                System.out.println("The parking number is invaild please entered new parking spot");
-                System.out.println();
-                System.out.println();
-                ParkingLot.displayAvaible(garciaLot23);
+                System.out.println("The parking number is invalid. Please enter a new parking spot.\n\n");
+                ParkingLot.displayAvailable(garciaLot23);
                 userCount = scanner.nextInt();
             }
             //Change the parking Info
-            ParkingLot.changeParkingToUnavaible(file, garciaLot23, userCount);
+            ParkingLot.changeParkingToUnavailable(file, garciaLot23, userCount);
             
             //Change user Info
             user.setCurrentParkAt("garcia Lot 23");
@@ -254,20 +248,18 @@ public class NorthResidLots {
             //Collecting the data of parkingLot
             garciaLot22 = ParkingLot.sendParkinglotInfo(file, garciaLot22);
            
-            ParkingLot.displayAvaible(garciaLot22);
+            ParkingLot.displayAvailable(garciaLot22);
             System.out.println("Which parking do you want to park?");
             int userCount = scanner.nextInt();
 
             //Asking user to input the correct parking number
             while(userCount > garciaLot22.length || userCount < 0 || garciaLot22[userCount-1] == 1){
-                System.out.println("The parking number is invaild please entered new parking spot");
-                System.out.println();
-                System.out.println();
-                ParkingLot.displayAvaible(garciaLot22);
+                System.out.println("The parking number is invalid. Please enter a new parking spot.\n\n");
+                ParkingLot.displayAvailable(garciaLot22);
                 userCount = scanner.nextInt();
             }
             //Change the parking Info
-            ParkingLot.changeParkingToUnavaible(file, garciaLot22, userCount);
+            ParkingLot.changeParkingToUnavailable(file, garciaLot22, userCount);
             
             //Change user Info
             user.setCurrentParkAt("garcia Lot 22");
@@ -322,20 +314,18 @@ public class NorthResidLots {
             //Collecting the data of parkingLot
             pinonLot27 = ParkingLot.sendParkinglotInfo(file, pinonLot27);
            
-            ParkingLot.displayAvaible(pinonLot27);
+            ParkingLot.displayAvailable(pinonLot27);
             System.out.println("Which parking do you want to park?");
             int userCount = scanner.nextInt();
 
             //Asking user to input the correct parking number
             while(userCount > pinonLot27.length || userCount < 0 || pinonLot27[userCount-1] == 1){
-                System.out.println("The parking number is invaild please entered new parking spot");
-                System.out.println();
-                System.out.println();
-                ParkingLot.displayAvaible(pinonLot27);
+                System.out.println("The parking number is invalid. Please enter a new parking spot.\n\n");
+                ParkingLot.displayAvailable(pinonLot27);
                 userCount = scanner.nextInt();
             }
             //Change the parking Info
-            ParkingLot.changeParkingToUnavaible(file, pinonLot27, userCount);
+            ParkingLot.changeParkingToUnavailable(file, pinonLot27, userCount);
             
             //Change user Info
             user.setCurrentParkAt("pinon Lot 22");
