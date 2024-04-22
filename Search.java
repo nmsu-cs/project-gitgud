@@ -112,7 +112,7 @@ public class Search {
         juniperLot = ParkingLot.sendParkinglotInfo(file, juniperLot);
 
         //Display parking infomation
-        ParkingLot.displayAvaible(juniperLot);
+        ParkingLot.displayAvailable(juniperLot);
      }
     
 
@@ -125,7 +125,7 @@ public class Search {
         garicaLot23 = ParkingLot.sendParkinglotInfo(file, garicaLot23);
 
         //Display parking infomation
-        ParkingLot.displayAvaible(garicaLot23);
+        ParkingLot.displayAvailable(garicaLot23);
      }
     
 
@@ -138,7 +138,7 @@ public class Search {
         garicaLot22 = ParkingLot.sendParkinglotInfo(file, garicaLot22);
 
         //Display parking infomation
-        ParkingLot.displayAvaible(garicaLot22);
+        ParkingLot.displayAvailable(garicaLot22);
      }
 
 
@@ -151,7 +151,7 @@ public class Search {
         pinonLot27 = ParkingLot.sendParkinglotInfo(file, pinonLot27);
 
         //Display parking infomation
-        ParkingLot.displayAvaible(pinonLot27);
+        ParkingLot.displayAvailable(pinonLot27);
      }
     
 
