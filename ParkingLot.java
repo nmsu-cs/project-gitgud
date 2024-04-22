@@ -49,7 +49,7 @@ public class ParkingLot {
     }
 
 //Display all of the avaible parking spot in the area
-    public static void displayAvaible(int[] parkingLot){
+    public static void displayAvailable(int[] parkingLot){
         int slotNumber = 1;
         int count = 0;
 
@@ -153,7 +153,7 @@ public class ParkingLot {
         return parkingLot;
     }
 
-    public static void changeParkingToUnavaible(File file, int [] parkingLot, int parkingNum){
+    public static void changeParkingToUnavailable(File file, int [] parkingLot, int parkingNum){
         int parkingSlotNum = 1;
         //If the user input the correct parking then read the file until find the parking number in the file.
             //It will change the number to 1 (Unavaible) in the array
