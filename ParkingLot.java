@@ -226,8 +226,7 @@ public class ParkingLot {
                     }//end of while
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
-                }
             }
+        }
     }
-
 }
