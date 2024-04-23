@@ -8,7 +8,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.PickingPermitPageController">
    <top>
       <BorderPane prefHeight="67.0" prefWidth="600.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
          <center>
@@ -43,8 +43,8 @@
                   <Font name="Verdana Bold" size="15.0" />
                </font>
             </Label>
-            <TextField layoutX="220.0" layoutY="193.0" />
-            <Button layoutX="273.0" layoutY="232.0" mnemonicParsing="false" text="Enter">
+            <TextField fx:id="parkingPermitTextField" layoutX="220.0" layoutY="193.0" />
+            <Button fx:id="enterButton" layoutX="273.0" layoutY="232.0" mnemonicParsing="false" onAction="#handleEnterPressed" text="Enter">
                <font>
                   <Font name="Verdana Bold" size="13.0" />
                </font>

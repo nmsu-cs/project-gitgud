@@ -1,9 +1,13 @@
 package User;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.StringJoiner;
 
 public class User {
     private String aggieID;
@@ -55,7 +59,7 @@ public class User {
 
     // Method to loadUserData
     public static void loadUserData(Map<String, User> userDatabase) {
-        File file = new File("project-gitgud/user_data.txt");
+        File file = new File("user_data.txt");
         if (file.exists()) {
             try (Scanner fileScanner = new Scanner(file)) {
                 while (fileScanner.hasNextLine()) {
@@ -75,4 +79,25 @@ public class User {
             }
         }
     }
+
+    public String toCSV(){
+        StringJoiner joiner = new StringJoiner(",");
+        joiner.add(aggieID);
+        joiner.add(fullName);
+        joiner.add(Boolean.toString(hasParkingPermit));
+        joiner.add(parkingPermitType);
+        return joiner.toString();
+    }
+
+    // Saves user to file
+    public static void saveUserToFile(User user, String filename) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename, true))) {
+                    writer.write(user.toCSV());
+                    writer.newLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }   
+
+
 }

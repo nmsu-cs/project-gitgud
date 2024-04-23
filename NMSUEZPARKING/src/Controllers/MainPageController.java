@@ -1,9 +1,11 @@
 package Controllers;
 
+import java.util.HashMap;
 import java.util.Map;
 
+import User.DataUserEntered;
 import User.User;
-import User.UserDataLoader;
+//import User.UserDataLoader;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,7 +13,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
+//import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class MainPageController {
@@ -29,12 +31,14 @@ public class MainPageController {
     @FXML
     private Button exitButton;
 
-    private Map<String, User> userDatabase = UserDataLoader.getUserDatabase();
+    private Map<String, User> userDatabase = new HashMap<>();
+
+    DataUserEntered data = DataUserEntered.getInstance();
 
     @FXML
     private void initialize() {
         // Load existing user data from file (if any)
-        UserDataLoader.loadUserData();
+        User.loadUserData(userDatabase);
     }
 
     @FXML
@@ -54,6 +58,10 @@ public class MainPageController {
 
             // Check if both aggie id and full name are equal to an entry in the data, then load next page.
             if(aggieID.equals(dataBaseAggieID) && fullName.equals(user.getFullName())){
+                data.setAggieID(user.getAggieID());
+                data.setFullName(user.getFullName());
+                data.setHasParkingPermit(user.getHasParkingPermit());
+                data.setParkingPermitType(user.getParkingPermitType());
                 try{
                     Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
         

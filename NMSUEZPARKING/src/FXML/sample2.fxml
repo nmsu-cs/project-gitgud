@@ -46,10 +46,10 @@
                   <Font name="Verdana Bold" size="20.0" />
                </font>
             </Label>
-            <Button layoutX="210.0" layoutY="24.0" mnemonicParsing="false" text="Find Parking" />
+            <Button fx:id="findParkingButton" layoutX="210.0" layoutY="24.0" mnemonicParsing="false" onAction="#findParkingAction" text="Find Parking" />
             <Button layoutX="223.0" layoutY="81.0" mnemonicParsing="false" text="Leave Parking" />
             <Button layoutX="274.0" layoutY="135.0" mnemonicParsing="false" text="Search for Parking" />
-            <Button layoutX="234.0" layoutY="194.0" mnemonicParsing="false" text="Report Parking" />
+            <Button fx:id="reportParkingButton" layoutX="234.0" layoutY="194.0" mnemonicParsing="false" onAction="#reportParkingAction" text="Report Parking" />
             <Button fx:id="exitButton" layoutX="234.0" layoutY="262.0" mnemonicParsing="false" onAction="#backButtonPressed" text="Exit" textFill="#ac5454" />
          </children>
       </AnchorPane>

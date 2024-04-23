@@ -1,7 +1,8 @@
 package Controllers;
 
+import User.DataUserEntered;
 import User.User;
-import User.UserDataLoader;
+//import User.UserDataLoader;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -32,6 +33,8 @@ public class NewUserController {
 
     @FXML
     private Button enterButton;
+
+    DataUserEntered data = DataUserEntered.getInstance();
 
     // Instance variables to store checkbox states
     private boolean isYesSelected = false;
@@ -95,14 +98,16 @@ public class NewUserController {
             }
         }
 
-        // Create a string to represent the parking permit status
-        String parkingPermitStatus = isYesSelected ? "Yes" : "No";
-
         // Create a new User object
-        User newUser = new User(aggieID, firstName + " " + lastName, isYesSelected, "");
+        User newUser = new User(aggieID, firstName + " " + lastName, isYesSelected, "BLANK");
 
         // Add the new user to the user database
-        UserDataLoader.addUser(newUser);
+        //User.saveUserToFile(newUser, "project-gitgud/user_data.txt");
+        data.setAggieID(aggieID);
+        data.setFullName(newUser.getFullName());
+        data.setHasParkingPermit(isYesSelected);
+        data.setParkingPermitType("BLANK");
+
 
         // Optionally, you can provide feedback to the user that the registration was successful
         System.out.println("User registration successful!");
@@ -114,8 +119,22 @@ public class NewUserController {
         yesCheckBox.setSelected(false);
         noCheckBox.setSelected(false);
 
-        // Navigate back to the main menu
-        backButtonPressed(event);
+        // Loading new page so user can enter their parking permit type
+        try {
+            Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+            Parent root;
+
+            // Load the root depending on whether the user has the permit or not.
+            if(isYesSelected) root = FXMLLoader.load(getClass().getResource("/FXML/sample5haspermit.fxml")); //loads has permit scene
+            else root = FXMLLoader.load(getClass().getResource("/FXML/sample4nopermit.fxml")); // Load no permit scene
+
+            Scene newScene = new Scene(root, 600, 400); //create a new scene size 600, 400
+            stage.setScene(newScene); //set the scene to the stage
+            stage.setTitle("New User Window"); //sets the title of the new window 
+            stage.show(); //show the new window 
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
