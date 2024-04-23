@@ -156,51 +156,142 @@ public class Search {
     
 
      public static void searchTrackLot100S(User user,  Map<String, User> userDatabase){
+        System.out.println("Hello welcome to the  Searching Track parking lot");
+        File file = new File("TrackLot100S.txt");
+        int[] trackLot= new int[100];
 
+        //get the parking Information
+        trackLot = ParkingLot.sendParkinglotInfo(file, trackLot);
+
+        //Display parking infomation
+        ParkingLot.displayAvailable(trackLot);
      }
     
 
      public static void searchODonaldParking55(User user,  Map<String, User> userDatabase){
+        System.out.println("Hello welcome to the  Searching O'Donald parking lot");
+        File file = new File("ODonaldLot55.txt");
+        int[] oDonaldLot= new int[100];
 
+        //get the parking Information
+        oDonaldLot = ParkingLot.sendParkinglotInfo(file, oDonaldLot);
+
+        //Display parking infomation
+        ParkingLot.displayAvailable(oDonaldLot);
      }
      
 
      public static void searchBookstoreLot16(User user,  Map<String, User> userDatabase){
+        System.out.println("Hello welcome to the  Searching Bookstore parking lot");
+        File file = new File("BookstoreLot16.txt");
+        int[] bookstoreLot= new int[100];
 
+        //get the parking Information
+        bookstoreLot = ParkingLot.sendParkinglotInfo(file, bookstoreLot);
+
+        //Display parking infomation
+        ParkingLot.displayAvailable(bookstoreLot);
      }
      
 
      public static void searchSatelliteLot100(User user,  Map<String, User> userDatabase){
+        System.out.println("Hello welcome to the  Searching Satellite Lot 100 parking lot");
+        File file = new File("SatelliteLot100.txt");
+        int[] satelliteLot = new int[100];
+
+        //get the parking Information
+        satelliteLot = ParkingLot.sendParkinglotInfo(file, satelliteLot);
+
+        //Display parking infomation
+        ParkingLot.displayAvailable(satelliteLot);
 
      }
     
 
      public static void searchRentFrowLot48(User user,  Map<String, User> userDatabase){
+        System.out.println("Hello welcome to the  Searching Rent Frow parking lot");
+        File file = new File("RentFrowLot48.txt");
+        int[] rentFrowLot  = new int[100];
+
+        //get the parking Information
+        rentFrowLot  = ParkingLot.sendParkinglotInfo(file, rentFrowLot );
+
+        //Display parking infomation
+        ParkingLot.displayAvailable(rentFrowLot );
 
      }
  
 
      public static void searchSkeensLot4(User user,  Map<String, User> userDatabase){
+        System.out.println("Hello welcome to the  Searching Skeens parking lot");
+        File file = new File("SkeensLot4.txt");
+        int[] skeensLot  = new int[100];
+
+        //get the parking Information
+        skeensLot  = ParkingLot.sendParkinglotInfo(file, skeensLot );
+
+        //Display parking infomation
+        ParkingLot.displayAvailable(skeensLot );
 
      }
    
      public static void searchChamisaVillageLot38(User user,  Map<String, User> userDatabase){
+        System.out.println("Hello welcome to the  Searching Chamisa Village parking lot");
+        File file = new File("ChamisaVillageLot38.txt");
+        int[] chamisaVillageLot = new int[100];
 
+        //get the parking Information
+        chamisaVillageLot = ParkingLot.sendParkinglotInfo(file, chamisaVillageLot );
+
+        //Display parking infomation
+        ParkingLot.displayAvailable(chamisaVillageLot );
      }
    
      public static void searchHorseshoeLot(User user,  Map<String, User> userDatabase){
+        System.out.println("Hello welcome to the  Searching Horseshoe parking lot");
+        File file = new File("HorseshoeLot.txt");
+        int[] horseshoeLot = new int[100];
 
+        //get the parking Information
+        horseshoeLot = ParkingLot.sendParkinglotInfo(file, horseshoeLot );
+
+        //Display parking infomation
+        ParkingLot.displayAvailable(horseshoeLot );
      }
     
      public static void searchScienceHallLot58(User user,  Map<String, User> userDatabase){
+        System.out.println("Hello welcome to the  Searching Science Hall parking lot");
+        File file = new File("ScienceHallLot58.txt");
+        int[] scienceHallLot = new int[100];
 
+        //get the parking Information
+        scienceHallLot = ParkingLot.sendParkinglotInfo(file, scienceHallLot);
+
+        //Display parking infomation
+        ParkingLot.displayAvailable(scienceHallLot );
      }
      
      public static void searchCorbettLot17(User user,  Map<String, User> userDatabase){
+        System.out.println("Hello welcome to the  Searching Corbett parking lot");
+        File file = new File("CorbettLot17.txt");
+        int[] corbettLot = new int[100];
 
+        //get the parking Information
+        corbettLot = ParkingLot.sendParkinglotInfo(file, corbettLot);
+
+        //Display parking infomation
+        ParkingLot.displayAvailable(corbettLot );
      }
 
      public static void searchLibarayLot45(User user,  Map<String, User> userDatabase){
+        System.out.println("Hello welcome to the  Searching Zuhl Library parking lot");
+        File file = new File("LibraryLot45.txt");
+        int[] libraryLot  = new int[100];
 
+        //get the parking Information
+        libraryLot  = ParkingLot.sendParkinglotInfo(file, libraryLot);
+
+        //Display parking infomation
+        ParkingLot.displayAvailable(libraryLot);
      }
 }
