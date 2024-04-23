@@ -73,7 +73,6 @@ public class FindParkingController{
             items.add("Science Hall lot 58");
             items.add("Corbett lot 17");
             items.add("Zuhl Libaray lot 45");
-            items.add("Track Lot 100S");
             items.add("Satellite Lot 100");
             items.add("Rent Frow Lot 48");
             items.add("Skeens Lot 4");
