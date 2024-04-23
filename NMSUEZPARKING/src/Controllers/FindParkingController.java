@@ -9,9 +9,14 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+
+import javax.swing.Action;
 
 import User.DataUserEntered;
 
@@ -23,6 +28,12 @@ public class FindParkingController{
     @FXML
     private Button backButton;
 
+    @FXML
+    private Button showMapButton;
+
+    @FXML
+    private Image mapImage;
+
     DataUserEntered data = DataUserEntered.getInstance();
 
     @FXML
@@ -33,6 +44,7 @@ public class FindParkingController{
         ObservableList<String> items = FXCollections.observableArrayList();
         if(data.getParkingPermitType().equals("Commuter Student Permit (Green)")){
             //System.out.println("found match");
+            mapImage = new Image("img/map.jpg");
             items.add("O'Donald Lot 55");
             items.add("Bookstore Lot 16");
             items.add("Track Lot 100S");
@@ -44,6 +56,7 @@ public class FindParkingController{
         }
         else if (data.getParkingPermitType().equals("North Residential Student Parking (Yellow)")){
             //System.out.println("found match");
+            mapImage = new Image("img/map2.jpg");
             items.add("Juniper Hall Lot 19");
             items.add("Garcia Hall Lot 23");
             items.add("Garcia Hall Lot 22 Behind Lot 23");
@@ -56,6 +69,7 @@ public class FindParkingController{
             items.add("Horseshoe Lot");
         }
         else if (data.getParkingPermitType().equals("Faculty/Staff Parking (Maroon)")){
+            mapImage = new Image("img/map3.jpg");
             items.add("Science Hall lot 58");
             items.add("Corbett lot 17");
             items.add("Zuhl Libaray lot 45");
@@ -66,10 +80,27 @@ public class FindParkingController{
             items.add("Chamisa Village Lot 38");
             items.add("Horseshoe Lot");
         }
-        else return;
+        else {
+            return;
+        }
 
         // Populate the ListView with the list of items
         listView.setItems(items);
+    }
+
+    @FXML
+    public void showMapButtonPressed(ActionEvent event) {
+        ImageView imageView = new ImageView(mapImage);
+        imageView.setFitWidth(1200); // Set the width to 1200
+        imageView.setFitHeight(720); // Set the height to 720
+        imageView.setPreserveRatio(true);
+
+        StackPane layout = new StackPane(imageView);
+
+        Stage mapStage = new Stage();
+        mapStage.setScene(new Scene(layout));
+        mapStage.setTitle("Map");
+        mapStage.show();
     }
 
     @FXML
