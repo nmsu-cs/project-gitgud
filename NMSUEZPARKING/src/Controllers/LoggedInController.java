@@ -58,6 +58,21 @@ public class LoggedInController {
         }
     }
 
+    @FXML 
+    private void searchParkingAction(ActionEvent event) {
+        try { 
+            Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+            Parent root = FXMLLoader.load(getClass().getResource("/FXML/sample7SearchPark.fxml"));
+            Scene newScene = new Scene(root, 600, 400);
+            stage.setScene(newScene);
+            stage.setTitle("Search Parking");
+            stage.show();
+        }   catch (IOException e) {
+            e.printStackTrace();
+            }
+        }
+
+
     @FXML
     private void reportParkingAction(ActionEvent event) {
         try {
