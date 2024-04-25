@@ -47,7 +47,7 @@
                </font>
             </Label>
             <Button fx:id="findParkingButton" layoutX="210.0" layoutY="24.0" mnemonicParsing="false" onAction="#findParkingAction" text="Find Parking" />
-            <Button layoutX="223.0" layoutY="81.0" mnemonicParsing="false" text="Leave Parking" />
+            <Button fx:id="leaveParkingButton" layoutX="223.0" layoutY="81.0" mnemonicParsing="false" onAction="#leaveParkingAction" text="Leave Parking" />
             <Button fx:id="searchParkingButton" layoutX="274.0" layoutY="135.0" mnemonicParsing="false" onAction="#searchParkingAction" text="Search for Parking" />
             <Button fx:id="reportParkingButton" layoutX="234.0" layoutY="194.0" mnemonicParsing="false" onAction="#reportParkingAction" text="Report Parking" />
             <Button fx:id="exitButton" layoutX="234.0" layoutY="262.0" mnemonicParsing="false" onAction="#backButtonPressed" text="Exit" textFill="#ac5454" />
