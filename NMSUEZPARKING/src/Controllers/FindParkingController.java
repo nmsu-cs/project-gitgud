@@ -141,14 +141,17 @@ public class FindParkingController{
         String selectedParkingLot = listView.getSelectionModel().getSelectedItem();
 
         if (selectedParkingSpace != null && selectedParkingLot != null) {
+
+            // Store the selected parking spot
+            data.setSelectedParkingSpot(selectedParkingSpace);
+            data.setSelectedParkingLot(selectedParkingLot);
+
             // Mark the selected parking space as taken
             markParkingSpaceAsTaken(selectedParkingSpace, "1");
         } else {
             System.out.println("Please select a parking lot and a parking space.");
         }
     }
-
-
 
 
 
@@ -208,6 +211,7 @@ public class FindParkingController{
                 try {
                     // Construct the temporary file name
                     File originalFile = new File(fileName);
+                    System.out.println(fileName);
                     String parentDirectory = originalFile.getParent();
                     String tempFileName = parentDirectory + File.separator + "temp_" + originalFile.getName();
 
@@ -232,7 +236,10 @@ public class FindParkingController{
 
                     // Replace the original file with the updated file
                     File tempFile = new File(tempFileName);
-                    if (tempFile.exists() && tempFile.renameTo(originalFile)) {
+                    if (tempFile.exists()) System.out.println("File exists");
+                    if (tempFile.exists() && originalFile.exists()) {
+                        originalFile.delete();
+                        tempFile.renameTo(originalFile);
                         System.out.println("Parking space " + parkingSpace + " in " + selectedParkingLot + " successfully marked as " + (availability.equals("1") ? "taken" : "available"));
                     } else {
                         System.out.println("Failed to update parking space.");
@@ -247,6 +254,7 @@ public class FindParkingController{
             System.out.println("Please select a parking lot.");
         }
     }
+
 
 
     @FXML

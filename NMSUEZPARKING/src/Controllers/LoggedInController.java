@@ -9,6 +9,8 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import java.io.IOException;
 
+import User.DataUserEntered;
+
 public class LoggedInController {
     @FXML
     private Button exitButton; //reference to exit button 
@@ -24,6 +26,8 @@ public class LoggedInController {
 
     @FXML
     private Button reportParkingButton; // New private Button field for "Report Parking" button
+
+    DataUserEntered data = DataUserEntered.getInstance();
 
     @FXML
     /**
