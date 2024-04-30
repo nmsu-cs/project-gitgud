@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.Map;
 
 import javafx.event.EventHandler;
-import javafx.scene.input.MouseEvent;
+//import javafx.scene.input.MouseEvent;
 
 public class SearchParkingController {
 
@@ -131,7 +131,7 @@ public class SearchParkingController {
     private void handleBackToMainMenuButtonAction() {
         // Load the main menu FXML file
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/FXML/sample.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/FXML/sample2.fxml"));
             Scene scene = new Scene(root);
 
             // Get the stage from the current button's scene and set the new scene
