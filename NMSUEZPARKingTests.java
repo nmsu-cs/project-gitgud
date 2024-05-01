@@ -101,7 +101,7 @@ public class NMSUEZPARKingTests
 
 
    //
-   // Test a user who has a Commuter Parking permit.
+   // Test a user who has a Faculty Parking permit.
    //
    @Test
    public void userFaculty()
@@ -110,6 +110,55 @@ public class NMSUEZPARKingTests
          User testUser = findUser("000000031");
          assertTrue(testUser.getHasParkingPermit());
          assertTrue(testUser.getParkingPermitType().equals("Faculty Parking (Maroon)"));
+      } catch (IOException e) {
+         e.printStackTrace();
+      }  
+   }
+
+
+   //
+   // Test a user who is currently parked in a north residential parking lot.
+   //
+   @Test
+   public void userParkedInNorthResidential()
+   {
+      try {
+         User testUser = findUser("000000101");
+         assertTrue(testUser.getHasParkingPermit());
+         assertTrue(testUser.getParkingPermitType().equals("North Residential Parking (Yellow)"));
+         assertTrue(testUser.getCurrentParkAt().equals("Juniper Lot"));
+      } catch (IOException e) {
+         e.printStackTrace();
+      }  
+   }
+
+
+   //
+   // Test a user who is currently parked in a commuter parking lot.
+   //
+   @Test
+   public void userParkedInCommuterLot()
+   {
+      try {
+         User testUser = findUser("000000201");
+         assertTrue(testUser.getHasParkingPermit());
+         assertTrue(testUser.getCurrentParkAt().equals("O'Donald Lot 55"));
+      } catch (IOException e) {
+         e.printStackTrace();
+      }  
+   }
+
+
+   //
+   // Test a user who is currently parked in a faculty lot.
+   //
+   @Test
+   public void userParkedInFacultyLot()
+   {
+      try {
+         User testUser = findUser("000000301");
+         assertTrue(testUser.getHasParkingPermit());
+         assertTrue(testUser.getCurrentParkAt().equals("Corbett Lot 17"));
       } catch (IOException e) {
          e.printStackTrace();
       }  
