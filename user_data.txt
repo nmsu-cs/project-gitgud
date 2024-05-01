@@ -1,0 +1,4 @@
+000000001,Brad Rad,false,,,0
+000000011,blib smib,true,North Residential Parking (Yellow),,0
+000000031,blib smip,true,Faculty Parking (Maroon),,0
+000000021,blib smid,true,Commuter Permit (Green),,0
