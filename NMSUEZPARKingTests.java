@@ -164,4 +164,55 @@ public class NMSUEZPARKingTests
       }  
    }
 
+
+   //
+   // Test a user who is currently parked in a spcific spot in a north residential parking lot.
+   //
+   @Test
+   public void userSpotInNorthResidential()
+   {
+      try {
+         User testUser = findUser("000000101");
+         assertTrue(testUser.getHasParkingPermit());
+         assertTrue(testUser.getParkingPermitType().equals("North Residential Parking (Yellow)"));
+         assertTrue(testUser.getCurrentParkNumAt() == 11);
+      } catch (IOException e) {
+         e.printStackTrace();
+      }  
+   }
+
+
+   //
+   // Test a user who is currently parked in a spcific spot in a commuter parking lot.
+   //
+   @Test
+   public void userSpotInCommuterLot()
+   {
+      try {
+         User testUser = findUser("000000201");
+         assertTrue(testUser.getHasParkingPermit());
+         assertTrue(testUser.getParkingPermitType().equals("Commuter Permit (Green)"));
+         assertTrue(testUser.getCurrentParkNumAt() == 12);
+      } catch (IOException e) {
+         e.printStackTrace();
+      }  
+   }
+
+
+   //
+   // Test a user who is currently parked in a spcific spot in a faculty parking lot.
+   //
+   @Test
+   public void userSpotInFacultyLot()
+   {
+      try {
+         User testUser = findUser("000000301");
+         assertTrue(testUser.getHasParkingPermit());
+         assertTrue(testUser.getParkingPermitType().equals("Faculty Parking (Maroon)"));
+         assertTrue(testUser.getCurrentParkNumAt() == 13);
+      } catch (IOException e) {
+         e.printStackTrace();
+      }  
+   }
+
 }
