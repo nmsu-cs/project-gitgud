@@ -32,7 +32,7 @@ public class LeaveParkingController {
     private void backButtonPressed(ActionEvent event){
         try {
             Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-            Parent root = FXMLLoader.load(getClass().getResource("/FXML/sample.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/FXML/sample2.fxml"));
             Scene newScene = new Scene(root, 600, 400);
             stage.setScene(newScene);
             stage.setTitle("New User Window");
