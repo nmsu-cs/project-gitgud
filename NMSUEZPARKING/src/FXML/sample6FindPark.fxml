@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.FindParkingController">
+   <children>
+      <Button fx:id="backButton" layoutX="464.0" layoutY="354.0" mnemonicParsing="false" onAction="#backButtonPressed" text="Back to Main Menu" textFill="#683535" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#112940" height="75.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
+      <AnchorPane prefHeight="75.0" prefWidth="600.0">
+         <children>
+            <Text fill="#fcf6f6" layoutX="229.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Find Parking">
+               <font>
+                  <Font name="Verdana Bold" size="20.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1a344d" height="325.0" layoutY="75.0" stroke="BLACK" strokeType="INSIDE" width="312.0" />
+      <AnchorPane layoutY="79.0" prefHeight="318.0" prefWidth="335.0">
+         <children>
+            <ListView fx:id="listView" layoutX="56.0" layoutY="59.0" prefHeight="200.0" prefWidth="200.0" />
+            <Button fx:id="showMapButton" layoutX="110.0" layoutY="278.0" mnemonicParsing="false" onAction="#showMapButtonPressed" text="Show Map" textFill="#2f43c9" />
+            <Label layoutX="56.0" layoutY="4.0" text="Choose a parking lot" textFill="#f8f3f3">
+               <font>
+                  <Font name="Verdana Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="41.0" layoutY="31.0" text="you would like to park in:" textFill="#f8f3f3">
+               <font>
+                  <Font name="Verdana Bold" size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <ListView fx:id="lotsAvailableList" layoutX="355.0" layoutY="149.0" prefHeight="173.0" prefWidth="200.0" />
+      <Label layoutX="322.0" layoutY="87.0" text="Now choose the lot you want">
+         <font>
+            <Font name="Verdana Bold" size="16.0" />
+         </font>
+      </Label>
+      <Button fx:id="submitButton" layoutX="355.0" layoutY="355.0" mnemonicParsing="false" onAction="#submitButtonPressed" text="Submit" />
+      <Label layoutX="322.0" layoutY="116.0" text="to park in, then press submit:">
+         <font>
+            <Font name="Verdana Bold" size="16.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

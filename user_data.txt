@@ -1,0 +1,7 @@
+000000021,blib smid,true,Commuter Permit (Green),,0
+000000031,blib smip,true,Faculty Parking (Maroon),,0
+000000001,Brad Rad,false,,,0
+000000011,blib smib,true,North Residential Parking (Yellow),,0
+000000101,Blue Orange,true,North Residential Parking (Yellow),Juniper Lot,11
+000000201,Blue Yellow,true,Commuter Permit (Green),O'Donald Lot 55,12
+000000301,Blue Red,true,Faculty Parking (Maroon),Corbett Lot 17,13
